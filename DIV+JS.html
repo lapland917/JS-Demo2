@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body{
+      margin: 0;
+     
+    }
+    #canvas{
+      height: 100vh;
+      background-color: gray;
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+  <div id="canvas">
+
+  </div>
+  <script>
+    //按下鼠标
+    var flog = false
+    document.onmousedown = function(down){
+      flog = true;
+      var x = down.clientX  //获取鼠标X轴方向的坐标
+      var y = down.clientY  //获取鼠标Y轴方向的坐标
+      divA = document.createElement('div') //创建一个div
+      canvas.appendChild(divA) //把创建的div放入到id为canvas的div里面
+      divA.style = "height:10px;width:10px;border-radius:5px;background-color:white;"+
+      "position:absolute; left:"+x+"px; top:"+y+"px;"
+      //放入div的样式
+    }
+    //移动鼠标
+    document.onmousemove = function(move){
+      // console.log('我移动了鼠标')
+      // console.log(move)
+      if(flog === true){
+      var x = move.clientX  //获取鼠标X轴方向的坐标
+      var y = move.clientY  //获取鼠标Y轴方向的坐标
+      divA = document.createElement('div') //创建一个div
+      canvas.appendChild(divA) //把创建的div放入到id为canvas的div里面
+      divA.style = "height:10px;width:10px;border-radius:5px;background-color:white;"+
+      "position:absolute; left:"+x+"px; top:"+y+"px;"
+      }
+    }
+    //松开鼠标
+    document.onmouseup = function(up){
+      flog = false
+    }
+  </script>
+</body>
+</html>

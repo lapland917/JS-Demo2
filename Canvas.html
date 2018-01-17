@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body{
+      margin: 0px;
+    }
+    #canvas{
+      background-color: #e9e9e9;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="canvas"  width="500" height="500">
+    
+  </canvas>
+  <script>
+    var canvas = document.getElementById('canvas')
+    var mark = false
+    var lastPoint ={'x':undefined,'y':undefined}
+   //按下鼠标
+    document.onmousedown = function(down){
+      mark = true
+      var x = down.clientX  //获取鼠标X轴方向的坐标
+      var y = down.clientY  //获取鼠标Y轴方向的坐标
+      lastPoint ={'x':x,'y':y}
+      var context = canvas.getContext('2d')
+      drawCircle(x,y,2)
+    }
+    
+    // 移动鼠标
+  document.onmousemove = function(move){
+      if(mark===true){
+      var context = canvas.getContext('2d')
+      var x = move.clientX  //获取鼠标X轴方向的坐标
+      var y = move.clientY  //获取鼠标Y轴方向的坐标
+      var newPoint = {'x':x,'y':y}
+      drawCircle(x,y,2)
+      drawLine(lastPoint.x,lastPoint.y,newPoint.x,newPoint.y)
+      lastPoint = newPoint
+      
+      }
+    }
+    //松开鼠标
+    document.onmouseup = function(up){
+      mark = false
+    }
+
+    //画圆
+    function drawCircle(x,y,radius){
+      var context = canvas.getContext('2d')
+      context.beginPath();
+      context.arc(x, y,radius,0,360)
+      context.fillStyle = 'red'; //填充颜色
+      context.fill(); 
+      context.closePath();
+      
+    }
+
+    //画线
+    function drawLine(x1,y1,x2,y2){
+      var context = canvas.getContext('2d')
+      context.beginPath()    //开始
+      context.moveTo(x1,y1)  //线的起点
+      context.lineWidth = 6  //线的宽度
+      context.lineTo(x2,y2)  //线的终点
+      context.strokeStyle = 'red'  
+      context.stroke()      //描边颜色
+      context.closePath();  //结束
+    }
+</script>
+  </script>
+</body>
+</html>
