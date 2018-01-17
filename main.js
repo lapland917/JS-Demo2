@@ -2,34 +2,33 @@ var Canvas1  = document.getElementById('Canvas')
 var context = Canvas1.getContext('2d')
 //获取页面宽度
 
-pagewidth = document.documentElement.clientWidth
-pageheight = document.documentElement.clientHeight
-Canvas1.width = pagewidth
-Canvas1.height = pageheight
-
+  var pageWidth = document.documentElement.clientWidth
+  var pageHeight = document.documentElement.clientHeight
+  var a = (pageWidth-1000)/2
+  var b = (pageHeight-500)/2
 
 window.onresize = function(){
-  pagewidth = document.documentElement.clientWidth
-  pageheight = document.documentElement.clientHeight
-  Canvas1.width = pagewidth
-  Canvas1.height = pageheight
+  var pageWidth = document.documentElement.clientWidth
+  var pageHeight = document.documentElement.clientHeight
+  var a = (pageWidth-1000)/2
+  var b = (pageHeight-500)/2
 }
 
 var Sign = false 
 var lastPoint = {'x':undefined,'y':undefined}
 ///点击鼠标
-Canvas1.onmousedown = function(down){
+document.onmousedown = function(down){
   Sign = true
-  var x = down.clientX
-  var y = down.clientY
+  var x = down.clientX-a
+  var y = down.clientY-b
   lastPoint = {'x':x,'y':y}
   drawCircle(x,y,3)
 }
 ///移动鼠标
-Canvas1.onmousemove = function(move){
+document.onmousemove = function(move){
   if(Sign){
-    var x = move.clientX  //获取鼠标X轴方向的坐标
-      var y = move.clientY  //获取鼠标Y轴方向的坐标
+    var x = move.clientX-a  //获取鼠标X轴方向的坐标
+      var y = move.clientY-b //获取鼠标Y轴方向的坐标
       var newPoint = {'x':x,'y':y}
       drawCircle(x,y,2)
       drawLine(lastPoint.x,lastPoint.y,newPoint.x,newPoint.y)
@@ -38,7 +37,7 @@ Canvas1.onmousemove = function(move){
 }
 
 ///松开鼠标
-Canvas1.onmouseup = function(up){
+document.onmouseup = function(up){
   Sign = false
 }
 

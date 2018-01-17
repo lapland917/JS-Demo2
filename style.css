@@ -3,7 +3,14 @@ body{
 }
 
 #Canvas{
-  background-color: gray;
-  display:block;
-  box-sizing: border-box;
+  background-color: #8BC34A; 
+  border-radius: 10px;
+}
+
+.Canvas-bar{
+  border-radius: 10px;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
 }
