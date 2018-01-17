@@ -8,12 +8,12 @@ Canvas1.width = pagewidth
 Canvas1.height = pageheight
 
 
-// window.onresize = function(){
-//   pagewidth = document.documentElement.clientWidth
-//   pageheight = document.documentElement.clientHeight
-//   Canvas1.width = pagewidth
-//   Canvas1.height = pageheight
-// }
+window.onresize = function(){
+  pagewidth = document.documentElement.clientWidth
+  pageheight = document.documentElement.clientHeight
+  Canvas1.width = pagewidth
+  Canvas1.height = pageheight
+}
 
 var Sign = false 
 var lastPoint = {'x':undefined,'y':undefined}

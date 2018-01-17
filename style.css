@@ -4,5 +4,6 @@ body{
 
 #Canvas{
   background-color: gray;
-  border: 1px solid red;
+  display:block;
+  box-sizing: border-box;
 }
