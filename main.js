@@ -7,47 +7,223 @@ var context = Canvas1.getContext('2d')
   var a = (pageWidth-1000)/2
   var b = (pageHeight-500)/2
 
-window.onresize = function(){
-  var pageWidth = document.documentElement.clientWidth
-  var pageHeight = document.documentElement.clientHeight
-  var a = (pageWidth-1000)/2
-  var b = (pageHeight-500)/2
+// window.onresize = function(){
+//   var pageWidth = document.documentElement.clientWidth
+//   var pageHeight = document.documentElement.clientHeight
+//   var a = (pageWidth-1200)/2
+//   var b = (pageHeight-500)/2
+//   console.log(pageWidth)
+//   console.log(pageHeight)
+// }
+
+
+
+//默认用户没有在使用鼠标
+var using = false 
+
+//定义第一个点的位置
+var lastPoint = {'x':undefined,'y':undefined}
+var usingEraser =false
+
+//点击橡皮的时候
+Eraser.onclick = function(){
+  usingEraser = true
+  usingBrush = false
+  Eraser.classList.add('Eraser-bar-avtive')
+  Brush.classList.remove('Brush-bar-avtive')
+  var BrushColor1 = document.getElementById('BrushColor')
+  BrushColor1.style='display:none'
+  var EraserSize1 = document.getElementById('EraserSize')
+  EraserSize1.style='display:block'
+  var BrushSize1 = document.getElementById('BrushSize')
+  BrushSize1.style='display:nore'
 }
 
-var Sign = false 
-var lastPoint = {'x':undefined,'y':undefined}
+//点击画笔的时候
+var usingBrush =false
+Brush.onclick = function(){
+  usingBrush = true
+  usingEraser = false
+  Brush.classList.add('Brush-bar-avtive')
+  Eraser.classList.remove('Eraser-bar-avtive')
+  var BrushColor1 = document.getElementById('BrushColor')
+  BrushColor1.style='display:block'
+  var BrushSize1 = document.getElementById('BrushSize')
+  BrushSize1.style='display:block'
+  var EraserSize1 = document.getElementById('EraserSize')
+  EraserSize1.style='display:none'
+}
+
+//改变画笔颜色
+BrushColorRed.onclick = function(){
+  context.fillStyle = 'red'
+  context.strokeStyle = 'red'
+  BrushColorRed.classList.add('BrushColorActive')
+  
+  BrushColorBlack.classList.remove('BrushColorActive')
+  BrushColorYewllo.classList.remove('BrushColorActive')
+  BrushColorBlue.classList.remove('BrushColorActive')
+  BrushColorGreen.classList.remove('BrushColorActive')
+  BrushColorOrange.classList.remove('BrushColorActive')
+  BrushColorPink.classList.remove('BrushColorActive')
+  BrushColorGray.classList.remove('BrushColorActive')
+}
+
+BrushColorBlack.onclick = function(){
+  context.fillStyle = 'Black'
+  context.strokeStyle = 'Black'
+  BrushColorBlack.classList.add('BrushColorActive')
+
+  BrushColorRed.classList.remove('BrushColorActive')
+  BrushColorYewllo.classList.remove('BrushColorActive')
+  BrushColorBlue.classList.remove('BrushColorActive')
+  BrushColorGreen.classList.remove('BrushColorActive')
+  BrushColorOrange.classList.remove('BrushColorActive')
+  BrushColorPink.classList.remove('BrushColorActive')
+  BrushColorGray.classList.remove('BrushColorActive')
+}
+
+BrushColorYewllo.onclick = function(){
+  context.fillStyle = '#FBBC05'
+  context.strokeStyle = '#FBBC05'
+  BrushColorYewllo.classList.add('BrushColorActive')
+  
+  BrushColorRed.classList.remove('BrushColorActive')
+  BrushColorBlack.classList.remove('BrushColorActive')
+  BrushColorBlue.classList.remove('BrushColorActive')
+  BrushColorGreen.classList.remove('BrushColorActive')
+  BrushColorOrange.classList.remove('BrushColorActive')
+  BrushColorPink.classList.remove('BrushColorActive')
+  BrushColorGray.classList.remove('BrushColorActive')
+}
+
+BrushColorBlue.onclick = function(){
+  context.fillStyle = '#4285F4'
+  context.strokeStyle = '#4285F4'
+  BrushColorBlue.classList.add('BrushColorActive')
+  
+  BrushColorRed.classList.remove('BrushColorActive')
+  BrushColorBlack.classList.remove('BrushColorActive')
+  BrushColorYewllo.classList.remove('BrushColorActive')
+  BrushColorGreen.classList.remove('BrushColorActive')
+  BrushColorOrange.classList.remove('BrushColorActive')
+  BrushColorPink.classList.remove('BrushColorActive')
+  BrushColorGray.classList.remove('BrushColorActive')
+}
+
+
+BrushColorGreen.onclick = function(){
+  context.fillStyle = '#34a853'
+  context.strokeStyle = '#34a853'
+  BrushColorGreen.classList.add('BrushColorActive')
+  
+  BrushColorRed.classList.remove('BrushColorActive')
+  BrushColorBlack.classList.remove('BrushColorActive')
+  BrushColorYewllo.classList.remove('BrushColorActive')
+  BrushColorBlue.classList.remove('BrushColorActive')
+  BrushColorOrange.classList.remove('BrushColorActive')
+  BrushColorPink.classList.remove('BrushColorActive')
+  BrushColorGray.classList.remove('BrushColorActive')
+}
+
+BrushColorOrange.onclick = function(){
+  context.fillStyle = 'orange'
+  context.strokeStyle = 'orange'
+  BrushColorOrange.classList.add('BrushColorActive')
+  
+  BrushColorRed.classList.remove('BrushColorActive')
+  BrushColorBlack.classList.remove('BrushColorActive')
+  BrushColorYewllo.classList.remove('BrushColorActive')
+  BrushColorBlue.classList.remove('BrushColorActive')
+  BrushColorGreen.classList.remove('BrushColorActive')
+  BrushColorPink.classList.remove('BrushColorActive')
+  BrushColorGray.classList.remove('BrushColorActive')
+
+}
+
+BrushColorPink.onclick = function(){
+  context.fillStyle = '#FF6699'
+  context.strokeStyle = '#FF6699'
+  BrushColorPink.classList.add('BrushColorActive')
+
+  BrushColorRed.classList.remove('BrushColorActive')
+  BrushColorBlack.classList.remove('BrushColorActive')
+  BrushColorYewllo.classList.remove('BrushColorActive')
+  BrushColorBlue.classList.remove('BrushColorActive')
+  BrushColorGreen.classList.remove('BrushColorActive')
+  BrushColorOrange.classList.remove('BrushColorActive')
+  BrushColorGray.classList.remove('BrushColorActive')
+}
+
+BrushColorGray.onclick = function(){
+  context.fillStyle = '#888888'
+  context.strokeStyle = '#888888'
+  BrushColorGray.classList.add('BrushColorActive')
+
+  BrushColorRed.classList.remove('BrushColorActive')
+  BrushColorBlack.classList.remove('BrushColorActive')
+  BrushColorYewllo.classList.remove('BrushColorActive')
+  BrushColorBlue.classList.remove('BrushColorActive')
+  BrushColorGreen.classList.remove('BrushColorActive')
+  BrushColorOrange.classList.remove('BrushColorActive')
+  BrushColorPink.classList.remove('BrushColorActive')
+}
+
+//改变画笔的粗细
+
+
 ///点击鼠标
 document.onmousedown = function(down){
-  Sign = true
-  var x = down.clientX-a
-  var y = down.clientY-b
-  lastPoint = {'x':x,'y':y}
-  drawCircle(x,y,3)
+    var x = down.clientX-a
+    var y = down.clientY-b
+    using = true
+  if(usingEraser){
+    if(using){
+      clear(x,y)
+    }
+  }
+  if(usingBrush){
+    if(using){
+      drawCircle(x,y)
+      lastPoint = {'x':x,'y':y}
+    }
+  }
 }
 ///移动鼠标
 document.onmousemove = function(move){
-  if(Sign){
-    var x = move.clientX-a  //获取鼠标X轴方向的坐标
-      var y = move.clientY-b //获取鼠标Y轴方向的坐标
+  var x = move.clientX-a  //获取鼠标X轴方向的坐标
+  var y = move.clientY-b //获取鼠标Y轴方向的坐标
+  if(usingEraser){
+    if(using===true){
+      clear(x,y)
+    }
+  }
+  if(usingBrush){
+    if(using===true){
+      drawCircle(x,y)
       var newPoint = {'x':x,'y':y}
-      drawCircle(x,y,2)
       drawLine(lastPoint.x,lastPoint.y,newPoint.x,newPoint.y)
       lastPoint = newPoint
+  }
   }
 }
 
 ///松开鼠标
 document.onmouseup = function(up){
-  Sign = false
+  using = false
 }
 
+
+
+
+///下面是函数///
 
 ///画圆
 function drawCircle(x,y,radius){
   var context = Canvas.getContext('2d')
   context.beginPath();
-  context.arc(x, y,radius,0,360)
-  context.fillStyle = 'black'; //填充颜色
+  context.arc(x, y,5,0,360)
+  // context.fillStyle = 'black'; //填充颜色
   context.fill(); 
   context.closePath();
 }
@@ -57,11 +233,16 @@ function drawLine(x1,y1,x2,y2){
   var context = Canvas.getContext('2d')
   context.beginPath()    //开始
   context.moveTo(x1,y1)  //线的起点
-  context.lineWidth = 6  //线的宽度
+  context.lineWidth = 10  //线的宽度
   context.lineTo(x2,y2)  //线的终点
-  context.strokeStyle = 'black'  
+  // context.strokeStyle = 'black'  
   context.stroke()      //描边颜色
   context.closePath();  //结束
 }
 
+///橡皮
+
+function clear(x,y){
+  context.clearRect(x, y,20,20);
+}
 
