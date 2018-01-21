@@ -18,6 +18,7 @@ var context = Canvas1.getContext('2d')
 
 
 
+
 //默认用户没有在使用鼠标
 var using = false 
 
@@ -33,25 +34,20 @@ Eraser.onclick = function(){
   Brush.classList.remove('Brush-bar-avtive')
   var BrushColor1 = document.getElementById('BrushColor')
   BrushColor1.style='display:none'
-  var EraserSize1 = document.getElementById('EraserSize')
-  EraserSize1.style='display:block'
-  var BrushSize1 = document.getElementById('BrushSize')
-  BrushSize1.style='display:nore'
 }
+
+CanvasBackgroundColor('white')
 
 //点击画笔的时候
 var usingBrush =false
 Brush.onclick = function(){
   usingBrush = true
   usingEraser = false
+  context.fillStyle = 'black'
   Brush.classList.add('Brush-bar-avtive')
   Eraser.classList.remove('Eraser-bar-avtive')
   var BrushColor1 = document.getElementById('BrushColor')
   BrushColor1.style='display:block'
-  var BrushSize1 = document.getElementById('BrushSize')
-  BrushSize1.style='display:block'
-  var EraserSize1 = document.getElementById('EraserSize')
-  EraserSize1.style='display:none'
 }
 
 //改变画笔颜色
@@ -169,8 +165,22 @@ BrushColorGray.onclick = function(){
   BrushColorPink.classList.remove('BrushColorActive')
 }
 
-//改变画笔的粗细
+//重置
+Reset.onclick = function(){
+ context.clearRect(0, 0, 1000, 500)
+}
 
+//下载图片
+Download.onclick = function(){
+
+  var url = Canvas1.toDataURL("image/png")
+  var a = document.createElement('a')
+  document.body.appendChild(a)
+  a.href = url;
+  a.download = '我的画'
+  a.target = '_blank'
+  a.click();
+}
 
 ///点击鼠标
 document.onmousedown = function(down){
@@ -223,7 +233,7 @@ function drawCircle(x,y,radius){
   var context = Canvas.getContext('2d')
   context.beginPath();
   context.arc(x, y,5,0,360)
-  // context.fillStyle = 'black'; //填充颜色
+  // context.fillStyle = 'white'; //填充颜色
   context.fill(); 
   context.closePath();
 }
@@ -241,8 +251,14 @@ function drawLine(x1,y1,x2,y2){
 }
 
 ///橡皮
-
 function clear(x,y){
   context.clearRect(x, y,20,20);
 }
+
+// 把整个Canvas的背景颜色变成白色，如果不设置，背景默认是透明的
+function CanvasBackgroundColor(x){
+  var CanvasBackgroundColor = context.fillStyle =x;
+  context.fillRect(0, 0, 1000, 500);  
+}
+
 
