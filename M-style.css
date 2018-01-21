@@ -1,0 +1,95 @@
+body{
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+
+@font-face {font-family: "iconfont";
+  src: url('./font/iconfont.eot?t=1516521140578'); /* IE9*/
+  src: url('./font/iconfont.eot?t=1516521140578#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('./font/data:application/x-font-woff;charset=utf-8;base64,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') format('woff'),
+  url('./font/iconfont.ttf?t=1516521140578') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('./font/iconfont.svg?t=1516521140578#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family:"iconfont" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-msnui-download:before { content: "\e67b"; }
+
+.icon-eraser:before { content: "\e615"; }
+
+.icon-pen:before { content: "\e640"; }
+
+.icon-Reset:before { content: "\e614"; }
+
+#Canvas{
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 0;left: 0;
+  z-index:200;
+}
+
+.Tool{
+  position: absolute;
+  z-index:300;
+  top: 1rem;
+  left: 1rem;
+}
+
+#Brush,#Eraser,#Reset,#DownLoad{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2rem;
+  height: 2rem;
+  margin-top: .7rem;
+  border-radius: 50%;
+  box-shadow:0 0 4px rgba(0,0,0,0.14), 0 4px 8px rgba(0,0,0,0.28);
+  background-color: white;
+}
+
+#Brush:active{
+  transform: scale(0.8);
+  transition:all .2s;
+}
+
+#Eraser:active{
+  transform: scale(0.8);
+  transition:all .2s;
+}
+
+#Reset:active{
+  transform: scale(0.8);
+  transition:all .2s;
+}
+
+#DownLoad:active{
+  transform: scale(0.8);
+  transition:all .2s;
+}
+
+.icon-pen{
+  font-size: 19px;
+}
+
+.icon-eraser{
+  font-size: 23px;
+}
+
+.icon-Reset{
+  font-size: 23px;
+  color:#494949;
+}
+
+.icon-msnui-download{
+  font-size: 20px;
+  color:#494949;
+}
