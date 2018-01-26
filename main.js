@@ -167,12 +167,13 @@ BrushColorGray.onclick = function(){
 
 //重置
 Reset.onclick = function(){
+  var context = Canvas1.getContext('2d')
  context.clearRect(0, 0, 1000, 500)
 }
 
 //下载图片
 Download.onclick = function(){
-
+  var context = Canvas1.getContext('2d')
   var url = Canvas1.toDataURL("image/png")
   var a = document.createElement('a')
   document.body.appendChild(a)
@@ -252,11 +253,13 @@ function drawLine(x1,y1,x2,y2){
 
 ///橡皮
 function clear(x,y){
+  var context = Canvas1.getContext('2d')
   context.clearRect(x, y,20,20);
 }
 
 // 把整个Canvas的背景颜色变成白色，如果不设置，背景默认是透明的
 function CanvasBackgroundColor(x){
+  var context = Canvas1.getContext('2d')
   var CanvasBackgroundColor = context.fillStyle =x;
   context.fillRect(0, 0, 1000, 500);  
 }

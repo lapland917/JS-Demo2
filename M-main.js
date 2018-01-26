@@ -1,5 +1,5 @@
 var Canvas1  = document.getElementById('Canvas')
-var context = Canvas1.getContext('2d')
+
 
 var pageWidth = document.documentElement.clientWidth
 var pageHeight = document.documentElement.clientHeight
@@ -167,6 +167,7 @@ Canvas1.ontouchend = function(){
 ////下面是函数
 //把画板填充成白色
 function CanvasBackgroundColor(x){
+  var context = Canvas1.getContext('2d')
   var CanvasBackgroundColor = context.fillStyle =x;
   context.fillRect(0, 0, pageWidth, pageHeight);  
 }
@@ -195,5 +196,6 @@ function drawLine(x1,y1,x2,y2){
 
 ///橡皮
 function clear(x,y){
+  var context = Canvas1.getContext('2d')
   context.clearRect(x, y,40,40);
 }
